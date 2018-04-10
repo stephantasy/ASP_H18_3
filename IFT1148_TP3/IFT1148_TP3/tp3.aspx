@@ -33,7 +33,7 @@
             <!-- Entête -->            
             <table class="auto-style1">
                 <tr>
-                    <td>
+                    <td style="width:400px;">
                         <h1>Saisie des notes</h1>
                     </td>
                     <td>
@@ -77,9 +77,10 @@
                     <asp:Parameter Name="no_etudiant" Type="Int32" />
                 </UpdateParameters>
             </asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSourceSection" runat="server" ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\notes.mdb;Persist Security Info=True" ProviderName="System.Data.OleDb" SelectCommand="SELECT DISTINCT [section] FROM [notes]"></asp:SqlDataSource>
         </div>
         <div>
-            <!-- GRIDVIEW -->
+            <!-- GRIDVIEW DES DONNEÉS -->
             <asp:GridView ID="gvEtudiant" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="no_etudiant" DataSourceID="SqlDataSourceNotes" ForeColor="#333333" GridLines="None" PageSize="5">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
@@ -87,7 +88,7 @@
                     <asp:BoundField DataField="no_etudiant" HeaderText="Numéro" InsertVisible="False" ReadOnly="True" SortExpression="no_etudiant" />
                     <asp:TemplateField HeaderText="Nom étudiant" SortExpression="nom">
                         <EditItemTemplate>
-                            <asp:TextBox ID="TbNomEtudiant" runat="server" Text='<%# Bind("nom") %>'></asp:TextBox>
+                            <asp:TextBox ID="TbNomEtudiant" runat="server" Text='<%# Bind("nom") %>' Columns="20"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RfvNomEtudiant" runat="server" ControlToValidate="TbNomEtudiant" Display="Dynamic" ErrorMessage="Veuillez entrer un nom" ForeColor="#CC0000" SetFocusOnError="True"></asp:RequiredFieldValidator>
                         </EditItemTemplate>
                         <ItemTemplate>
@@ -96,7 +97,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Code permanent" SortExpression="code_permanent">
                         <EditItemTemplate>
-                            <asp:TextBox ID="TbCodePermanent" runat="server" Text='<%# Bind("code_permanent") %>'></asp:TextBox>
+                            <asp:TextBox ID="TbCodePermanent" runat="server" Text='<%# Bind("code_permanent") %>' Columns="20"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RfvCodePermanent" runat="server" ControlToValidate="TbCodePermanent" Display="Dynamic" ErrorMessage="Veuillez entrer le code permanent" ForeColor="#CC0000" SetFocusOnError="True"></asp:RequiredFieldValidator>
                             <asp:RegularExpressionValidator ID="RevCodePermanent" runat="server" ControlToValidate="TbCodePermanent" Display="Dynamic" ErrorMessage="Le code permanent doit être au format ABCD12345678" ForeColor="#CC0000" SetFocusOnError="True" ValidationExpression="[a-zA-Z]{4}[0-9]{8}"></asp:RegularExpressionValidator>
                         </EditItemTemplate>
@@ -104,10 +105,18 @@
                             <asp:Label ID="LbCodePermanent" runat="server" Text='<%# Bind("code_permanent") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="section" HeaderText="Section" SortExpression="section" />
+                    <asp:TemplateField HeaderText="Section" SortExpression="section">
+                        <EditItemTemplate>
+                            <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSourceSection" DataTextField="section" DataValueField="section" SelectedValue='<%# Bind("section") %>'>
+                            </asp:DropDownList>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("section") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="TP1" SortExpression="tp1">
                         <EditItemTemplate>
-                            <asp:TextBox ID="TbNoteTP1" runat="server" Text='<%# Bind("tp1") %>'></asp:TextBox>
+                            <asp:TextBox ID="TbNoteTP1" runat="server" Text='<%# Bind("tp1") %>' Columns="5"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RfvNoteTP1" runat="server" ControlToValidate="TbNoteTP1" Display="Dynamic" ErrorMessage="Veuillez entrer une note" ForeColor="#CC0000" SetFocusOnError="True"></asp:RequiredFieldValidator>
                             <asp:CustomValidator ID="cvNoteTp1" runat="server" ClientValidationFunction="customClientValidation" ControlToValidate="TbNoteTP1" Display="Dynamic" ForeColor="#CC0000" SetFocusOnError="True"></asp:CustomValidator>
                         </EditItemTemplate>
@@ -117,7 +126,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="TP2" SortExpression="tp2">
                         <EditItemTemplate>
-                            <asp:TextBox ID="TbNoteTP2" runat="server" Text='<%# Bind("tp2") %>'></asp:TextBox>
+                            <asp:TextBox ID="TbNoteTP2" runat="server" Text='<%# Bind("tp2") %>' Columns="5"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RfvNoteTP2" runat="server" ControlToValidate="TbNoteTP2" Display="Dynamic" ErrorMessage="Veuillez entrer une note" ForeColor="#CC0000" SetFocusOnError="True"></asp:RequiredFieldValidator>
                             <asp:CustomValidator ID="cvNoteTp2" runat="server" ClientValidationFunction="customClientValidation" ControlToValidate="TbNoteTP2" Display="Dynamic" ForeColor="#CC0000" SetFocusOnError="True"></asp:CustomValidator>
                         </EditItemTemplate>
@@ -127,7 +136,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="TP3" SortExpression="tp3">
                         <EditItemTemplate>
-                            <asp:TextBox ID="TbNoteTP3" runat="server" Text='<%# Bind("tp3") %>'></asp:TextBox>
+                            <asp:TextBox ID="TbNoteTP3" runat="server" Text='<%# Bind("tp3") %>' Columns="5"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RfvNoteTP3" runat="server" ControlToValidate="TbNoteTP3" Display="Dynamic" ErrorMessage="Veuillez entrer une note" ForeColor="#CC0000" SetFocusOnError="True"></asp:RequiredFieldValidator>
                             <asp:CustomValidator ID="cvNoteTp3" runat="server" ClientValidationFunction="customClientValidation" ControlToValidate="TbNoteTP3" Display="Dynamic" ForeColor="#CC0000" SetFocusOnError="True"></asp:CustomValidator>
                         </EditItemTemplate>
@@ -137,7 +146,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Intra" SortExpression="intra">
                         <EditItemTemplate>
-                            <asp:TextBox ID="TbNoteIntra" runat="server" Text='<%# Bind("intra") %>'></asp:TextBox>
+                            <asp:TextBox ID="TbNoteIntra" runat="server" Text='<%# Bind("intra") %>' Columns="5"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RfvNoteIntra" runat="server" ControlToValidate="TbNoteIntra" Display="Dynamic" ErrorMessage="Veuillez entrer une note" ForeColor="#CC0000" SetFocusOnError="True"></asp:RequiredFieldValidator>
                             <asp:CustomValidator ID="cvNoteIntra" runat="server" ClientValidationFunction="customClientValidation" ControlToValidate="TbNoteIntra" Display="Dynamic" ForeColor="#CC0000" SetFocusOnError="True"></asp:CustomValidator>
                         </EditItemTemplate>
@@ -147,7 +156,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Final" SortExpression="final">
                         <EditItemTemplate>
-                            <asp:TextBox ID="TbNoteFinal" runat="server" Text='<%# Bind("final") %>'></asp:TextBox>
+                            <asp:TextBox ID="TbNoteFinal" runat="server" Text='<%# Bind("final") %>' Columns="5"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RfvNoteFinal" runat="server" ControlToValidate="TbNoteFinal" Display="Dynamic" ErrorMessage="Veuillez entrer une note" ForeColor="#CC0000" SetFocusOnError="True"></asp:RequiredFieldValidator>
                             <asp:CustomValidator ID="cvNoteFinal" runat="server" ClientValidationFunction="customClientValidation" ControlToValidate="TbNoteFinal" Display="Dynamic" ForeColor="#CC0000" SetFocusOnError="True"></asp:CustomValidator>
                         </EditItemTemplate>
@@ -174,8 +183,8 @@
             </asp:GridView>
         </div>
         <div>            
-            <!-- Heure de la dernière modification de la page -->
-            <asp:Label ID="lbHeureModifPage" runat="server" Text="Heure de la dernière modification de la page"><% =Now() %></asp:Label>
+            <!-- Heure du dernier rafaichissement du GridView -->
+            <asp:Label ID="lbHeureAccesServeurMsg" runat="server" Text="GridView modifié le : "></asp:Label><asp:Label ID="lbHeureAccesServeur" runat="server"><% =Now() %></asp:Label>
         </div>
         <div>            
             <!-- DetailsView : caché au démarrage -->
@@ -211,7 +220,18 @@
                             <asp:Label ID="lbDvCodePermanent" runat="server" Text='<%# Bind("code_permanent") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="section" HeaderText="Section" SortExpression="section" />
+                    <asp:TemplateField HeaderText="Section" SortExpression="section">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSourceSection" DataTextField="section" DataValueField="section" SelectedValue='<%# Bind("section") %>'>
+                            </asp:DropDownList>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("section") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="TP1" SortExpression="tp1">
                         <EditItemTemplate>
                             <asp:TextBox ID="tbDvEditTp1" runat="server" Text='<%# Bind("tp1") %>'></asp:TextBox>
@@ -292,12 +312,38 @@
             <!-- Bouton d'affichage du rapport -->
             <asp:Button ID="btRapport" runat="server" Text="Afficher le rapport" />
             <asp:Label ID="lbPatienter" runat="server" Text="<h1>Patientez, construction du rapport...</h1>" Visible="False"></asp:Label>
-            <asp:GridView ID="gvRapport" runat="server" Visible="False">
+            <!-- GRIDVIEW  du rapport -->
+            <asp:GridView ID="gvRapport" runat="server" Visible="False" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="no_etudiant" DataSourceID="SqlDataSourceNotes" ForeColor="#333333" GridLines="None">
+                <AlternatingRowStyle BackColor="White" />
+                <Columns>
+                    <asp:BoundField DataField="no_etudiant" HeaderText="Numéro" InsertVisible="False" ReadOnly="True" SortExpression="no_etudiant" />
+                    <asp:BoundField DataField="nom" HeaderText="Nom étudiant" SortExpression="nom" />
+                    <asp:BoundField DataField="code_permanent" HeaderText="Code permanent" SortExpression="code_permanent" />
+                    <asp:BoundField DataField="section" HeaderText="Section" SortExpression="section" />
+                    <asp:BoundField DataField="tp1" HeaderText="TP 1" SortExpression="tp1" />
+                    <asp:BoundField DataField="tp2" HeaderText="TP 2" SortExpression="tp2" />
+                    <asp:BoundField DataField="tp3" HeaderText="TP 3" SortExpression="tp3" />
+                    <asp:BoundField DataField="intra" HeaderText="Intra" SortExpression="intra" />
+                    <asp:BoundField DataField="final" HeaderText="Final" SortExpression="final" />
+                    <asp:TemplateField HeaderText="Note finale"></asp:TemplateField>
+                    <asp:TemplateField HeaderText="Message">
+                        <ItemStyle ForeColor="#CC0000" />
+                    </asp:TemplateField>
+                </Columns>
+                <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+                <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+                <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+                <SortedAscendingCellStyle BackColor="#FDF5AC" />
+                <SortedAscendingHeaderStyle BackColor="#4D0000" />
+                <SortedDescendingCellStyle BackColor="#FCF6C0" />
+                <SortedDescendingHeaderStyle BackColor="#820000" />
             </asp:GridView>
         </div>
         <div>            
-            <!-- Heure du dernier accées au serveur -->
-            <asp:Label ID="lbHeureAccesServeur" runat="server" Text="Heure du dernier accès au serveur"><% =Now() %></asp:Label>
+            <!-- Heure de du dernier affichage du rapport (côté client) -->
+            <asp:Label ID="lbHeureModifPageMsg" runat="server" Text="Rapport modifiée le : "></asp:Label><asp:Label ID="lbHeureModifPage" runat="server" Text=""><% =Now() %></asp:Label>            
         </div>
     </form>
 </body>
