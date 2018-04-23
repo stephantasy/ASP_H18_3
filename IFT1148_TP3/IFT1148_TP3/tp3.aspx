@@ -101,7 +101,7 @@
                             <asp:TemplateField HeaderText="Nom étudiant" SortExpression="nom">
                                 <EditItemTemplate>
                                     <asp:TextBox ID="TbNomEtudiant" runat="server" Text='<%# Bind("nom") %>' Columns="20"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RfvNomEtudiant" runat="server" ControlToValidate="TbNomEtudiant" Display="Dynamic" ErrorMessage="Veuillez entrer un nom" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="False"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RfvNomEtudiant" runat="server" ControlToValidate="TbNomEtudiant" Display="Dynamic" ErrorMessage="Veuillez entrer un nom" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="True"></asp:RequiredFieldValidator>
                                 </EditItemTemplate>
                                 <ItemTemplate>
                                     <asp:Label ID="LbNomEtudiant" runat="server" Text='<%# Bind("nom") %>'></asp:Label>
@@ -110,8 +110,8 @@
                             <asp:TemplateField HeaderText="Code permanent" SortExpression="code_permanent">
                                 <EditItemTemplate>
                                     <asp:TextBox ID="TbCodePermanent" runat="server" Text='<%# Bind("code_permanent") %>' Columns="20"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RfvCodePermanent" runat="server" ControlToValidate="TbCodePermanent" Display="Dynamic" ErrorMessage="Veuillez entrer le code permanent" ForeColor="#CC0000" SetFocusOnError="True"></asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="RevCodePermanent" runat="server" ControlToValidate="TbCodePermanent" Display="Dynamic" ErrorMessage="Le code permanent doit être au format ABCD12345678" ForeColor="#CC0000" SetFocusOnError="True" ValidationExpression="[A-Z]{4}[0-9]{8}"></asp:RegularExpressionValidator>
+                                    <asp:RequiredFieldValidator ID="RfvCodePermanent" runat="server" ControlToValidate="TbCodePermanent" Display="Dynamic" ErrorMessage="Veuillez entrer le code permanent" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="True"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="RevCodePermanent" runat="server" ControlToValidate="TbCodePermanent" Display="Dynamic" ErrorMessage="Le code permanent doit être au format ABCD12345678" ForeColor="#CC0000" SetFocusOnError="True" ValidationExpression="[A-Z]{4}[0-9]{8}" EnableClientScript="True"></asp:RegularExpressionValidator>
                                 </EditItemTemplate>
                                 <ItemTemplate>
                                     <asp:Label ID="LbCodePermanent" runat="server" Text='<%# Bind("code_permanent") %>'></asp:Label>
@@ -129,7 +129,7 @@
                             <asp:TemplateField HeaderText="TP1" SortExpression="tp1">
                                 <EditItemTemplate>
                                     <asp:TextBox ID="TbNoteTP1" runat="server" Text='<%# Bind("tp1") %>' Columns="5"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RfvNoteTP1" runat="server" ControlToValidate="TbNoteTP1" Display="Dynamic" ErrorMessage="Veuillez entrer une note" ForeColor="#CC0000" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RfvNoteTP1" runat="server" ControlToValidate="TbNoteTP1" Display="Dynamic" ErrorMessage="Veuillez entrer une note" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="True"></asp:RequiredFieldValidator>
                                     <asp:CustomValidator ID="cvNoteTp1" runat="server" OnServerValidate="CustomServerValidation" ClientValidationFunction="customClientValidation" ControlToValidate="TbNoteTP1" Display="Dynamic" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="True"></asp:CustomValidator>
                                 </EditItemTemplate>
                                 <ItemTemplate>
@@ -139,7 +139,7 @@
                             <asp:TemplateField HeaderText="TP2" SortExpression="tp2">
                                 <EditItemTemplate>
                                     <asp:TextBox ID="TbNoteTP2" runat="server" Text='<%# Bind("tp2") %>' Columns="5"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RfvNoteTP2" runat="server" ControlToValidate="TbNoteTP2" Display="Dynamic" ErrorMessage="Veuillez entrer une note" ForeColor="#CC0000" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RfvNoteTP2" runat="server" ControlToValidate="TbNoteTP2" Display="Dynamic" ErrorMessage="Veuillez entrer une note" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="True"></asp:RequiredFieldValidator>
                                     <asp:CustomValidator ID="cvNoteTp2" runat="server" OnServerValidate="CustomServerValidation" ClientValidationFunction="customClientValidation" ControlToValidate="TbNoteTP2" Display="Dynamic" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="True"></asp:CustomValidator>
                                 </EditItemTemplate>
                                 <ItemTemplate>
@@ -149,7 +149,7 @@
                             <asp:TemplateField HeaderText="TP3" SortExpression="tp3">
                                 <EditItemTemplate>
                                     <asp:TextBox ID="TbNoteTP3" runat="server" Text='<%# Bind("tp3") %>' Columns="5"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RfvNoteTP3" runat="server" ControlToValidate="TbNoteTP3" Display="Dynamic" ErrorMessage="Veuillez entrer une note" ForeColor="#CC0000" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RfvNoteTP3" runat="server" ControlToValidate="TbNoteTP3" Display="Dynamic" ErrorMessage="Veuillez entrer une note" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="True"></asp:RequiredFieldValidator>
                                     <asp:CustomValidator ID="cvNoteTp3" runat="server" OnServerValidate="CustomServerValidation" ClientValidationFunction="customClientValidation" ControlToValidate="TbNoteTP3" Display="Dynamic" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="True"></asp:CustomValidator>
                                 </EditItemTemplate>
                                 <ItemTemplate>
@@ -159,7 +159,7 @@
                             <asp:TemplateField HeaderText="Intra" SortExpression="intra">
                                 <EditItemTemplate>
                                     <asp:TextBox ID="TbNoteIntra" runat="server" Text='<%# Bind("intra") %>' Columns="5"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RfvNoteIntra" runat="server" ControlToValidate="TbNoteIntra" Display="Dynamic" ErrorMessage="Veuillez entrer une note" ForeColor="#CC0000" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RfvNoteIntra" runat="server" ControlToValidate="TbNoteIntra" Display="Dynamic" ErrorMessage="Veuillez entrer une note" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="True"></asp:RequiredFieldValidator>
                                     <asp:CustomValidator ID="cvNoteIntra" runat="server" OnServerValidate="CustomServerValidation" ClientValidationFunction="customClientValidation" ControlToValidate="TbNoteIntra" Display="Dynamic" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="True"></asp:CustomValidator>
                                 </EditItemTemplate>
                                 <ItemTemplate>
@@ -169,7 +169,7 @@
                             <asp:TemplateField HeaderText="Final" SortExpression="final">
                                 <EditItemTemplate>
                                     <asp:TextBox ID="TbNoteFinal" runat="server" Text='<%# Bind("final") %>' Columns="5"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RfvNoteFinal" runat="server" ControlToValidate="TbNoteFinal" Display="Dynamic" ErrorMessage="Veuillez entrer une note" ForeColor="#CC0000" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RfvNoteFinal" runat="server" ControlToValidate="TbNoteFinal" Display="Dynamic" ErrorMessage="Veuillez entrer une note" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="True"></asp:RequiredFieldValidator>
                                     <asp:CustomValidator ID="cvNoteFinal" runat="server" OnServerValidate="CustomServerValidation" ClientValidationFunction="customClientValidation" ControlToValidate="TbNoteFinal" Display="Dynamic" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="True"></asp:CustomValidator>
                                 </EditItemTemplate>
                                 <ItemTemplate>
@@ -213,7 +213,7 @@
                                 </EditItemTemplate>
                                 <InsertItemTemplate>
                                     <asp:TextBox ID="tbDvInsertNom" runat="server" Text='<%# Bind("nom") %>'></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="rfvInsertNom" runat="server" ControlToValidate="tbDvInsertNom" Display="Dynamic" ErrorMessage="Veuillez entrer un nom" ForeColor="#CC0000" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfvInsertNom" runat="server" ControlToValidate="tbDvInsertNom" Display="Dynamic" ErrorMessage="Veuillez entrer un nom" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="True"></asp:RequiredFieldValidator>
                                 </InsertItemTemplate>
                                 <ItemTemplate>
                                     <asp:Label ID="lbDvNom" runat="server" Text='<%# Bind("nom") %>'></asp:Label>
@@ -225,8 +225,8 @@
                                 </EditItemTemplate>
                                 <InsertItemTemplate>
                                     <asp:TextBox ID="tbDvInsertCodePermanent" runat="server" Text='<%# Bind("code_permanent") %>'></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="rfvInsertCodePermanent" runat="server" ControlToValidate="tbDvInsertCodePermanent" Display="Dynamic" ErrorMessage="Veuillez entrer le code permanent" ForeColor="#CC0000" SetFocusOnError="True"></asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="RevCodePermanent" runat="server" ControlToValidate="tbDvInsertCodePermanent" Display="Dynamic" ErrorMessage="Le code permanent doit être au format ABCD12345678" ForeColor="#CC0000" SetFocusOnError="True" ValidationExpression="[A-Z]{4}[0-9]{8}"></asp:RegularExpressionValidator>
+                                    <asp:RequiredFieldValidator ID="rfvInsertCodePermanent" runat="server" ControlToValidate="tbDvInsertCodePermanent" Display="Dynamic" ErrorMessage="Veuillez entrer le code permanent" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="True"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="RevCodePermanent" runat="server" ControlToValidate="tbDvInsertCodePermanent" Display="Dynamic" ErrorMessage="Le code permanent doit être au format ABCD12345678" ForeColor="#CC0000" SetFocusOnError="True" ValidationExpression="[A-Z]{4}[0-9]{8}" EnableClientScript="True"></asp:RegularExpressionValidator>
                                 </InsertItemTemplate>
                                 <ItemTemplate>
                                     <asp:Label ID="lbDvCodePermanent" runat="server" Text='<%# Bind("code_permanent") %>'></asp:Label>
@@ -250,7 +250,7 @@
                                 </EditItemTemplate>
                                 <InsertItemTemplate>
                                     <asp:TextBox ID="tbDvInsertTp1" runat="server" Text='<%# Bind("tp1") %>'></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="rfvInsertTp1" runat="server" ControlToValidate="tbDvInsertTp1" Display="Dynamic" ErrorMessage="Veuillez entrer une note" ForeColor="#CC0000" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfvInsertTp1" runat="server" ControlToValidate="tbDvInsertTp1" Display="Dynamic" ErrorMessage="Veuillez entrer une note" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="True"></asp:RequiredFieldValidator>
                                     <asp:CustomValidator ID="cvInsertTp1" runat="server" OnServerValidate="CustomServerValidation" ClientValidationFunction="customClientValidation" ControlToValidate="tbDvInsertTp1" Display="Dynamic" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="True"></asp:CustomValidator>
                                 </InsertItemTemplate>
                                 <ItemTemplate>
@@ -263,7 +263,7 @@
                                 </EditItemTemplate>
                                 <InsertItemTemplate>
                                     <asp:TextBox ID="tbDvInsertTp2" runat="server" Text='<%# Bind("tp2") %>'></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="rfvInsertTp2" runat="server" ControlToValidate="tbDvInsertTp2" Display="Dynamic" ErrorMessage="Veuillez entrer une note" ForeColor="#CC0000" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfvInsertTp2" runat="server" ControlToValidate="tbDvInsertTp2" Display="Dynamic" ErrorMessage="Veuillez entrer une note" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="True"></asp:RequiredFieldValidator>
                                     <asp:CustomValidator ID="cvInsertTp2" runat="server" OnServerValidate="CustomServerValidation" ClientValidationFunction="customClientValidation" ControlToValidate="tbDvInsertTp2" Display="Dynamic" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="True"></asp:CustomValidator>
                                 </InsertItemTemplate>
                                 <ItemTemplate>
@@ -276,7 +276,7 @@
                                 </EditItemTemplate>
                                 <InsertItemTemplate>
                                     <asp:TextBox ID="tbDvInsertTp3" runat="server" Text='<%# Bind("tp3") %>'></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="rfvInsertTp3" runat="server" ControlToValidate="tbDvInsertTp3" Display="Dynamic" ErrorMessage="Veuillez entrer une note" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="False"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfvInsertTp3" runat="server" ControlToValidate="tbDvInsertTp3" Display="Dynamic" ErrorMessage="Veuillez entrer une note" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="True"></asp:RequiredFieldValidator>
                                     <asp:CustomValidator ID="cvInsertTp3" runat="server" OnServerValidate="CustomServerValidation" ClientValidationFunction="customClientValidation" ControlToValidate="tbDvInsertTp3" Display="Dynamic" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="True"></asp:CustomValidator>
                                 </InsertItemTemplate>
                                 <ItemTemplate>
@@ -289,7 +289,7 @@
                                 </EditItemTemplate>
                                 <InsertItemTemplate>
                                     <asp:TextBox ID="tbDvInsertIntra" runat="server" Text='<%# Bind("intra") %>'></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="rfvInsertIntra" runat="server" ControlToValidate="tbDvInsertIntra" Display="Dynamic" ErrorMessage="Veuillez entrer une note" ForeColor="#CC0000" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfvInsertIntra" runat="server" ControlToValidate="tbDvInsertIntra" Display="Dynamic" ErrorMessage="Veuillez entrer une note" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="True"></asp:RequiredFieldValidator>
                                     <asp:CustomValidator ID="cvInsertIntra" runat="server" OnServerValidate="CustomServerValidation" ClientValidationFunction="customClientValidation" ControlToValidate="tbDvInsertIntra" Display="Dynamic" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="True"></asp:CustomValidator>
                                 </InsertItemTemplate>
                                 <ItemTemplate>
@@ -302,7 +302,7 @@
                                 </EditItemTemplate>
                                 <InsertItemTemplate>
                                     <asp:TextBox ID="tbDvInsertFinal" runat="server" Text='<%# Bind("final") %>'></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="rfvInsertFinal" runat="server" ControlToValidate="tbDvInsertFinal" Display="Dynamic" ErrorMessage="Veuillez entrer une note" ForeColor="#CC0000" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfvInsertFinal" runat="server" ControlToValidate="tbDvInsertFinal" Display="Dynamic" ErrorMessage="Veuillez entrer une note" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="True"></asp:RequiredFieldValidator>
                                     <asp:CustomValidator ID="cvInsertFinal" runat="server" OnServerValidate="CustomServerValidation" ClientValidationFunction="customClientValidation" ControlToValidate="tbDvInsertFinal" Display="Dynamic" ForeColor="#CC0000" SetFocusOnError="True" EnableClientScript="True"></asp:CustomValidator>
                                 </InsertItemTemplate>
                                 <ItemTemplate>
