@@ -80,8 +80,6 @@ Partial Class tp3 : Inherits Page
     'Mise à jour du rapport
     Private Sub gvRapport_RowDataBound(sender As Object, e As GridViewRowEventArgs) Handles gvRapport.RowDataBound
 
-        gvEtudiant.DataBind()
-
         'On ne traite que les tuples
         If e.Row.RowType = DataControlRowType.DataRow Then
             ' Variables
@@ -129,7 +127,7 @@ Partial Class tp3 : Inherits Page
 
         Dim localizedValue As String    'Valeur du champ "localisé" (avec "." ou "," selon la localisation)
         Dim NumberValue As Double       'Valeur numérique du champ
-        Dim textBoxTraite As TextBox = FindControl(source.ControlToValidate)    'TextBox controlée
+        Dim textBoxTraite As TextBox = source.Parent.FindControl(source.ControlToValidate.ToString)    'TextBox controlée
         Dim rangeValueMax As Double     'Valeur maximale permise pour la note
 
         ' Non valide par défaut
@@ -170,7 +168,7 @@ Partial Class tp3 : Inherits Page
             args.IsValid = True
         Else
             'Hors interval
-            source.ErrorMessage = ERROR_MESSAGE_NOTE_RANGE + " 0 et " + rangeValueMax
+            source.ErrorMessage = ERROR_MESSAGE_NOTE_RANGE + " 0 et " + rangeValueMax.ToString
         End If
     End Sub
 
